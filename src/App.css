@@ -34,11 +34,27 @@ nav {
 }
 
 #ferieStengtHeader {
-  background-color: #333333;
+  background-color: #33bbc7;
 }
 
 #header-img {
   max-height: 400px;
+}
+
+#price-list {
+}
+
+.table thead th:nth-child(1), .table thead th:nth-child(2), .table thead th:nth-child(3) {
+  border-top: 0px;
+} 
+
+#opening-times {
+ margin: auto;
+ box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+ border-radius: 10px;
+ width: 100%;
+/*  background-color: #212121f4;
+ color: white; */
 }
 
 hr.solid {
@@ -50,11 +66,36 @@ hr.solid {
   padding: 10px;
 }
 
+.splitGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
+}
+
+.responsive-table-sm {
+  display: table;
+  width: 100%;
+}
+
+.highlighted {
+  color: #f0d004;
+  font-size: 20px;
+  padding: 10px;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  .splitGrid {
+    grid-template-columns: auto;
   }
 }

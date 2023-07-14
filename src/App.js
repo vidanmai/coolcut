@@ -3,7 +3,7 @@ import headerImg from "./img/filler_img.jpg";
 
 function App() {
   const renderOpeningTimesTable = () => {
-    const currentDayOfWeek = new Date().getDate();
+    const currentDayOfWeek = new Date().getDay();
     const weekDays = [
       "Mandag",
       "Tirsdag",
@@ -13,10 +13,9 @@ function App() {
       "Lørdag",
       "Søndag",
     ];
-    //TODO:
     return (
-      <div>
-        <table className="table">
+        <div className="responsive-table-sm m-auto">
+          <table className="table table-dark" id="opening-times">
           <thead>
             <tr>
               <th scope="col"></th>
@@ -25,21 +24,23 @@ function App() {
             </tr>
           </thead>
           <tbody>
-              {weekDays.map((day, index) => (
-                <th scope="row"
-                  key={index}
-                  className={currentDayOfWeek === index ? "highlighted" : ""}
+            {weekDays.map((day, index) => (
+              <tr key={index}>
+                <th
+                  scope="row"
+                  className={currentDayOfWeek === index+1 ? "highlighted" : ""}
                 >
                   {day}
                 </th>
-              ))}
-              <td>10:00</td>
-              <td>17:00</td>
-                {/* Add table data rows, TODO: need to do for each row, this one shits all out at once */}
+                <td className={currentDayOfWeek === index+1 ? "highlighted" : ""}>10:00</td>
+                <td className={currentDayOfWeek === index+1 ? "highlighted" : ""}>17:00</td>
+              </tr>
+            ))}
+            {/* Add table data rows, TODO: need to do for each row, this one shits all out at once */}
             {/* Add more table data rows if needed */}
           </tbody>
         </table>
-      </div>
+        </div>
     );
   };
 
@@ -61,14 +62,19 @@ function App() {
           </div>
         </div>
         <div className="container p-4">
-          <section id="img-section">
-            <img
-              id="header-img"
-              className="img-fluid"
-              src={headerImg}
-              alt="Bilde"
-            />
-          </section>
+          <div className="splitGrid">
+            <section id="img-section" className="m-auto">
+              <img
+                id="header-img"
+                className="img-fluid"
+                src={headerImg}
+                alt="Bilde"
+              />
+            </section>
+            <section>
+              <div className="m-auto">{renderOpeningTimesTable()}</div>
+            </section>
+          </div>
           <br />
           <hr className="solid" />
           <br /> {/** Temporary breaks, fix with css styling */}
@@ -96,24 +102,6 @@ function App() {
                 </tr>
               </tbody>
             </table>
-          </section>
-          <br />
-          <hr className="solid" />
-          <br />
-          <section id="opening-times">
-            <div className="shadow">
-              {renderOpeningTimesTable()}
-            </div>
-            <h2>Åpingstider</h2>
-            <ul id="opening-times" className="list-group list-group-flush my-4">
-              <li className="list-group-item">Mandag - 10:00-17:00</li>
-              <li className="list-group-item">Tirsdag - 10:00-17:00</li>
-              <li className="list-group-item">Onsdag - Stengt</li>
-              <li className="list-group-item">Torsdag - 10:00-17:00</li>
-              <li className="list-group-item">Fredag - 10:00-17:00</li>
-              <li className="list-group-item">Lørdag - 10:00-15:00</li>
-              <li className="list-group-item">Søndag - Stengt</li>
-            </ul>
           </section>
         </div>
       </div>
