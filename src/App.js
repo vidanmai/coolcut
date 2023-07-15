@@ -1,18 +1,12 @@
 import "./App.css";
 import headerImg from "./img/filler_img.jpg";
+import { openingTimes } from "./openingTimes";
 
 function App() {
   const renderOpeningTimesTable = () => {
     const currentDayOfWeek = new Date().getDay();
-    const weekDays = [
-      "Mandag",
-      "Tirsdag",
-      "Onsdag",
-      "Torsdag",
-      "Fredag",
-      "Lørdag",
-      "Søndag",
-    ];
+    console.log(openingTimes);
+    console.log(openingTimes.Fredag.opening);
     return (
         <div className="responsive-table-sm m-auto">
           <table className="table table-dark" id="opening-times">
@@ -24,7 +18,7 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {weekDays.map((day, index) => (
+            {Object.entries(openingTimes).map(([day, times], index) => (
               <tr key={index}>
                 <th
                   scope="row"
@@ -32,12 +26,10 @@ function App() {
                 >
                   {day}
                 </th>
-                <td className={currentDayOfWeek === index+1 ? "highlighted" : ""}>10:00</td>
-                <td className={currentDayOfWeek === index+1 ? "highlighted" : ""}>17:00</td>
+                <td className={currentDayOfWeek === index+1 ? "highlighted" : ""}>{times.opening}</td>
+                <td className={currentDayOfWeek === index+1 ? "highlighted" : ""}>{times.closing}</td>
               </tr>
             ))}
-            {/* Add table data rows, TODO: need to do for each row, this one shits all out at once */}
-            {/* Add more table data rows if needed */}
           </tbody>
         </table>
         </div>
