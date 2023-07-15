@@ -5,8 +5,6 @@ import { openingTimes } from "./openingTimes";
 function App() {
   const renderOpeningTimesTable = () => {
     const currentDayOfWeek = new Date().getDay();
-    console.log(openingTimes);
-    console.log(openingTimes.Fredag.opening);
     return (
         <div className="responsive-table-sm m-auto">
           <table className="table table-dark" id="opening-times">
