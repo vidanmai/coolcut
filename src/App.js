@@ -35,9 +35,9 @@ function App() {
   };
 
   return (
-    <div className="Cool Cut">
+    <div id="coolcut">
       <header>
-        <nav className="navbar navbar-light bg-light">
+        <nav className="navbar navbar-light bg-light justify-content-center">
           <a className="navbar-brand" href="/">
             <h2>Cool Cut Frisørsalong</h2>
           </a>
@@ -52,7 +52,7 @@ function App() {
           </div>
         </div>
         <div className="container p-4">
-          <div className="splitGrid">
+          <div className="splitGrid my-4">
             <section id="img-section" className="my-auto">
               <img
                 id="header-img"
@@ -67,10 +67,10 @@ function App() {
           </div>
           <br />
           <hr className="solid" />
-          <br /> {/** Temporary breaks, fix with css styling */}
-          <section id="price-list">
+          <br />
+          <section id="price-list-section" className="my-2">
             <h1>Prisliste</h1>
-            <table className="table table-hover my-4">
+            <table className="table table-hover my-4" id="price-list">
               <thead className="thead-dark">
                 <tr>
                   <th scope="col">Behandling</th>
