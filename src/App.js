@@ -6,7 +6,7 @@ function App() {
   const renderOpeningTimesTable = () => {
     const currentDayOfWeek = new Date().getDay();
     return (
-        <div className="responsive-table-sm m-auto">
+        <div className="responsive-table-sm">
           <table className="table table-dark" id="opening-times">
           <thead>
             <tr>
@@ -53,7 +53,7 @@ function App() {
         </div>
         <div className="container p-4">
           <div className="splitGrid">
-            <section id="img-section" className="m-auto">
+            <section id="img-section" className="my-auto">
               <img
                 id="header-img"
                 className="img-fluid"
@@ -61,8 +61,8 @@ function App() {
                 alt="Bilde"
               />
             </section>
-            <section>
-              <div className="m-auto">{renderOpeningTimesTable()}</div>
+            <section id="openingTimesSection" className="m-auto w-100">
+              <div>{renderOpeningTimesTable()}</div>
             </section>
           </div>
           <br />
