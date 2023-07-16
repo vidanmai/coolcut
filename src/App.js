@@ -3,8 +3,18 @@ import headerImg from "./img/filler_img.jpg";
 import { openingTimes } from "./openingTimes";
 
 function App() {
+  
+  const getWeekDay = () => {
+    let currentDayOfWeek = new Date().getDay();
+    if (currentDayOfWeek === 0) { // Set Sunday index
+      return 7;
+    }
+    return currentDayOfWeek;
+  }
+
   const renderOpeningTimesTable = () => {
-    const currentDayOfWeek = new Date().getDay();
+    const currentDayOfWeek = getWeekDay();
+
     return (
         <div className="responsive-table-sm">
           <table className="table table-dark" id="opening-times">
@@ -18,6 +28,9 @@ function App() {
           <tbody>
             {Object.entries(openingTimes).map(([day, times], index) => (
               <tr key={index}>
+                {console.log("index: " + index)}
+                {console.log("Current day: " + currentDayOfWeek)}
+                {console.log("index+1: " + (index+1))}
                 <th
                   scope="row"
                   className={currentDayOfWeek === index+1 ? "highlighted" : ""}
