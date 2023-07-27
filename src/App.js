@@ -3,21 +3,55 @@ import headerImg from "./img/filler_img.jpg";
 import { openingTimes } from "./openingTimes";
 
 function App() {
-  
   const getWeekDay = () => {
     let currentDayOfWeek = new Date().getDay();
-    if (currentDayOfWeek === 0) { // Set Sunday index
+    if (currentDayOfWeek === 0) {
+      // Set Sunday index
       return 7;
     }
     return currentDayOfWeek;
-  }
+  };
+
+  /* const priceList = () => {
+    return (
+      <div>
+        <br />
+        <hr className="solid" />
+        <br />
+        <section id="price-list-section" className="my-2">
+          <h1>Prisliste</h1>
+          <table className="table table-hover my-4" id="price-list">
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">Behandling</th>
+                <th scope="col">Pris</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Enkel hårklipp</th>
+                <td>kr 149</td>
+              </tr>
+              <tr>
+                <th scope="row">Hårklipp 2</th>
+                <td>kr 399</td>
+              </tr>
+              <tr>
+                <th scope="row">Hårklipp 3</th>
+                <td>kr 499</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    );
+  }; */
 
   const renderOpeningTimesTable = () => {
     const currentDayOfWeek = getWeekDay();
-
     return (
-        <div className="responsive-table-sm">
-          <table className="table table-dark" id="opening-times">
+      <div className="responsive-table-sm">
+        <table className="table table-dark" id="opening-times">
           <thead>
             <tr>
               <th scope="col"></th>
@@ -28,23 +62,50 @@ function App() {
           <tbody>
             {Object.entries(openingTimes).map(([day, times], index) => (
               <tr key={index}>
-                {console.log("index: " + index)}
-                {console.log("Current day: " + currentDayOfWeek)}
-                {console.log("index+1: " + (index+1))}
                 <th
                   scope="row"
-                  className={currentDayOfWeek === index+1 ? "highlighted" : ""}
+                  className={
+                    currentDayOfWeek === index + 1 ? "highlighted" : ""
+                  }
                 >
                   {day}
                 </th>
-                <td className={currentDayOfWeek === index+1 ? "highlighted" : ""}>{times.opening}</td>
-                <td className={currentDayOfWeek === index+1 ? "highlighted" : ""}>{times.closing}</td>
+                <td
+                  className={
+                    currentDayOfWeek === index + 1 ? "highlighted" : ""
+                  }
+                >
+                  {times.opening}
+                </td>
+                <td
+                  className={
+                    currentDayOfWeek === index + 1 ? "highlighted" : ""
+                  }
+                >
+                  {times.closing}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
-        </div>
+      </div>
     );
+  };
+
+  const renderVacationHeader = () => {
+    const date = new Date();
+    if (date > new Date("2023-08-01 00:00:00")) {
+      return null;
+    }
+    return (
+    <div className="container-fluid p-4 text-white" id="ferieStengtHeader">
+      <h1 className="d-flex justify-content-center">Feriestengt</h1>
+      <div id="feriestengt">
+        <h3>Åpner igjen</h3>
+        <h3>1. August</h3>
+      </div>
+    </div>
+    )
   };
 
   return (
@@ -57,13 +118,7 @@ function App() {
         </nav>
       </header>
       <div id="body">
-        <div className="container-fluid p-5 text-white" id="ferieStengtHeader">
-          <h1 className="d-flex justify-content-center">Feriestengt</h1>
-          <div id="feriestengt">
-            <h3>Stengt fra</h3>
-            <h3>3. juli til 5. august - endre teksten her</h3>
-          </div>
-        </div>
+        {renderVacationHeader()}
         <div className="container p-4">
           <div className="splitGrid my-4">
             <section id="img-section" className="my-auto">
@@ -78,34 +133,6 @@ function App() {
               <div>{renderOpeningTimesTable()}</div>
             </section>
           </div>
-          <br />
-          <hr className="solid" />
-          <br />
-          <section id="price-list-section" className="my-2">
-            <h1>Prisliste</h1>
-            <table className="table table-hover my-4" id="price-list">
-              <thead className="thead-dark">
-                <tr>
-                  <th scope="col">Behandling</th>
-                  <th scope="col">Pris</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Enkel hårklipp</th>
-                  <td>kr 149</td>
-                </tr>
-                <tr>
-                  <th scope="row">Hårklipp 2</th>
-                  <td>kr 399</td>
-                </tr>
-                <tr>
-                  <th scope="row">Hårklipp 3</th>
-                  <td>kr 499</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
         </div>
       </div>
     </div>
